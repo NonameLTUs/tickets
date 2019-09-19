@@ -1,0 +1,53 @@
+.choose-specialist {
+    display: block;
+    margin: 3rem 0;
+}
+
+.clients-list {
+    display: inline-block;
+    list-style: none;
+    background-color: #282828;
+    width: 600px;
+}
+
+.clients-list > li {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 16px;
+}
+
+.clients-list>li:not(:last-child) {
+    border-bottom: 1px solid #303030;
+}
+
+.clients-list__header {
+    background-color: #FF5714;
+}
+
+.clients-list__header-specialist {
+    text-transform: uppercase;
+}
+
+.clients-list__header-number {
+    text-transform: uppercase;
+    justify-self: center;
+}
+
+.clients-list__number {
+    justify-self: center;
+}
+
+.clients-list__button {
+    justify-self: end;
+    background-color: #fff;
+    border: 0;
+    padding: 1rem 2rem;
+    transition: all .15s;
+}
+.clients-list__button:hover {
+    background-color: #FF5714;
+    color: #fff;
+}

@@ -1,7 +1,7 @@
 $(function() {
     loadClients();
 
-    function _orderClients(clients) {
+    function orderClients(clients) {
         /// Order clients by specialist and number
         clients.sort(function (a, b) {
             return a.specialist - b.specialist || a.id - b.id;
@@ -12,7 +12,7 @@ $(function() {
 
     function loadClients() {
         /// Load clients from localStorage
-        var clients = _orderClients(Storage.getItem('clients') || []);
+        var clients = orderClients(Storage.getItem('clients') || []);
 
         /// Show message if waiting line is empty
         if(0 === Object.keys(clients).length) {
