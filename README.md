@@ -95,7 +95,7 @@ Rekomenduojamas užduoties įgyvendinimas ( `Level 2` )
 
 **Techniniai kriterijai:**
 - [x] Specialistui aptarnavus klientą, vietoj duomenų ištrynimo, pažymima, kad klientas aptarnautas
-- [ ] Švieslentėje fono spalva išskiriamas dabar aptarnaujamas klientas (pirmas elementas pagal specialistą)
+- [x] Švieslentėje fono spalva išskiriamas dabar aptarnaujamas klientas (pirmas elementas pagal specialistą)
 - [x] Švieslentėje žemiau rodomi tik neaptarnauti klientai (tie kuriems nebuvo paspaustas mygtukas `Aptarnauta`)
 - [x] Yra funkcija apskaičiavimui, kiek truko apsilankymas (galima senus apsilankymų laikus saugoti atskirame objekte `localStorage`)
 - [ ] Švieslentėje rodoma, kiek laiko liko klientui laukti (vidurkis pagal laukimo laiką per specialistą)
