@@ -1,6 +1,7 @@
 $(function () {
     /// Events
-    $(document).on('click', "[data-action='create-client']", createClient);
+    $(document).on('click', "[data-action='loadDefaultClients']", loadDefaultClients);
+    $(document).on('click', "[data-action='createClient']", createClient);
 
     function loadDefaultClients () {
             var url = "http://localhost/nfq/back/index.php?endpoint=getClients";

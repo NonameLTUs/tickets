@@ -12,31 +12,37 @@ $(function () {
         return clients;
     }
 
-    var allClients = Storage.getItem('clients') || [];
+    var allClients = Client.getByStatus(0);
     var visibleClients = orderClients(allClients);
+
     loadClients();
     updateSpecialistsSelect(allClients);
 
+    function updateServicedUser(client) {
+        var updatedClient = Object.assign({}, client);
+
+        updatedClient.status = 1;
+        updatedClient.serviced_at = (new Date()).getTime();
+
+        return updatedClient;
+    }
+
     function serviced(button) {
-        var id = parseInt($(button).attr('data-id'));
-        var clients = Storage.getItem('clients');
+        var id = $(button).attr('data-id');
 
-        /// Get all clients except one with given ID
-        allClients = clients.filter(function (client) {
-            if(client.id !== parseInt(id)) {
-                return client;
-            }
-        })
-        
-        Storage.setItem('clients', allClients);
+        var client = Client.findById(id);
 
-        if (0 === allClients.length) {
+        Client.update(client, updateServicedUser(client));
+        allClients = Client.getByStatus(0);
+        filterBySpecialist();
+
+        $("tr[data-id='" + id + "']").remove();
+
+        if (0 === Object.keys(visibleClients).length) {
             loadClients();
-        } else {
-            $("tr[data-id='" + id + "']").remove();
         }
-
-        updateSpecialistsSelect(allClients);
+ 
+       updateSpecialistsSelect(allClients);
     }
 
     function loadClients() {
@@ -47,23 +53,25 @@ $(function () {
             }
 
             $("table[data-name='clients-list']").hide();
-        } else {
-            $("table[data-name='clients-list']").show();
-            $("table[data-name='clients-list'] tbody td").remove();
 
-            for (var i in visibleClients) {
-                var client = visibleClients[i];
+            return;
+        }
+        
+        $("table[data-name='clients-list']").show();
+        $("table[data-name='clients-list'] tbody td").remove();
 
-                var template = (
-                    "<tr data-id='" + client.id + "'>" +
-                    "<td class='align-middle'>" + client.specialist + "</td>" +
-                    "<td class='align-middle'>" + client.id + "</td>" +
-                    "<td><button type='button' class='btn btn-success' data-id='" + client.id + "' data-action='clientServiced'>Serviced</button></td>" +
-                    "</tr>"
-                );
+        for (var i in visibleClients) {
+            var client = visibleClients[i];
 
-                $("table[data-name='clients-list'] tbody").append(template);
-            }
+            var template = (
+                "<tr data-id='" + client.id + "'>" +
+                "<td class='align-middle'>" + client.specialist + "</td>" +
+                "<td class='align-middle'>" + client.id + "</td>" +
+                "<td><button type='button' class='btn btn-success' data-id='" + client.id + "' data-action='clientServiced'>Serviced</button></td>" +
+                "</tr>"
+            );
+
+            $("table[data-name='clients-list'] tbody").append(template);
         }
     }
 
@@ -100,13 +108,22 @@ $(function () {
         }
     }
 
-    function filterBySpecialist(select) {
-        var specialist = $(select).val();
-
-        if("all" === specialist) {
-            visibleClients = orderClients(Storage.getItem('clients'));
+    function filterBySpecialist(select = null) {
+        var specialist;
+        if(null === select) {
+            specialist = $("select[name = 'specialist']").val();
         } else {
-            visibleClients = orderClients(allClients.filter(function (client) { return client.specialist == specialist }));
+            specialist = $(select).val();
+        }
+
+        if(0 < allClients.length) {
+            if("all" === specialist) {
+                visibleClients = orderClients(allClients);
+            } else {
+                visibleClients = orderClients(allClients.filter(function (client) { return client.specialist == specialist }));
+            }
+        } else {
+            visibleClients = [];
         }
 
         loadClients();
