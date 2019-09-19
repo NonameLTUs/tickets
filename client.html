@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 
 <head>
-    <title>NFQ - Board</title>
+    <title>NFQ - Client</title>
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/common.js"></script>
     <script type="text/javascript" src="assets/js/Storage.js"></script>
     <script type="text/javascript" src="assets/js/Client.js"></script>
-    <script type="text/javascript" src="assets/js/pages/board.js"></script>
+    <script type="text/javascript" src="assets/js/pages/client.js"></script>
 </head>
 
 <body>
@@ -19,10 +20,10 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="board.html">Board</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="client.html">Client page</a>
                     </li>
                     <li class="nav-item">
@@ -35,17 +36,30 @@
             </div>
         </nav>
 
-        <h2 class="mt-5 mb-5">Board</h2>
+        <h2 class="mt-5 mb-5">Client page</h2>
 
-        <table class="table" data-name="clients-list">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">Specialist</th>
-                    <th scope="col">Number</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+        <form class="form-row mb-3" data-name="chooseSpecialist">
+            <div class="col-2">
+                <label for="number" class="col-form-label">Your number</label>
+            </div>
+            <div class="col-2">
+                <input type="number" name="number" id="number" class="form-control" required />
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn btn-primary" data-action="loadClientData">Load</button>
+            </div>
+        </div>
+
+        <div class="alert alert-primary" role="alert" data-name="yourTurnAlert" style="display: none">It is your turn</div>
+        <div class="alert alert-success" role="alert" data-name="servicedAlert" style="display: none">You have been serviced!</div>
+
+        <div data-name="num-in-que" style="display: none">
+            <span>You are</span> <span class="badge badge-secondary" data-name="num"></span> <span>in a row</span>
+        </div>
+        <div data-name="approximate-waiting-time" style="display: none">
+            <span>You will go after</span> <span class="badge badge-secondary" data-name="time"></span>
+        </div>
+
     </div>
 </body>
 

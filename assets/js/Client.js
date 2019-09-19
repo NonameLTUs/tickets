@@ -32,11 +32,17 @@ var Client = {
             allClients = Client.getAll();
         }
 
-        return allClients.filter(function (client) {
+        var filteredClients = allClients.filter(function (client) {
             if (specialist == client.specialist) {
                 return client
             }
         });
+
+        filteredClients.sort(function (a, b) {
+            return a.id - b.id;
+        })
+
+        return filteredClients;
     },
     set: function (clients) {
         Storage.setItem('clients', clients);
@@ -76,6 +82,15 @@ var Client = {
             }
         })
     },
+    clientInRow: function (client) {
+        var clients = Client.getByStatus(0, Client.getBySpecialist(client.specialist));
+        
+        var clientInRow = clients.findIndex(function (item) {
+            return item.id == client.id
+        });
+
+        return clientInRow;
+    },
     averageWaitingTime: function () {
         var servicedClients = Client.getByStatus(1);
         var averages = {};
@@ -103,5 +118,12 @@ var Client = {
         }
 
         return averages;
+    },
+    approximateWaitingTime: function (client) {
+        var numberInRow = Client.clientInRow(client);
+        var seconds = Client.averageWaitingTime()[client.specialist] * numberInRow / 1000;
+        var minutes = Math.floor(seconds / 60);
+
+        return (Math.floor(minutes) + ':' + Math.round(seconds - minutes * 60));
     }
 }
