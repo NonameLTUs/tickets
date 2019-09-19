@@ -91,7 +91,7 @@ Rekomenduojamas užduoties įgyvendinimas ( `Level 2` )
 - [ ] Švieslentės puslapis, skirtas rodyti greitai sulauksiančius klientus (rodoma tik naujausia dalis eilės)
 
 **Extra puslapis**
-- [ ] Lankytojo puslapis, kur jis mato laiką iki savo eilės (nebūtina žiūrėti į švieslentę)
+- [x] Lankytojo puslapis, kur jis mato laiką iki savo eilės (nebūtina žiūrėti į švieslentę)
 
 **Techniniai kriterijai:**
 - [x] Specialistui aptarnavus klientą, vietoj duomenų ištrynimo, pažymima, kad klientas aptarnautas
@@ -99,8 +99,8 @@ Rekomenduojamas užduoties įgyvendinimas ( `Level 2` )
 - [x] Švieslentėje žemiau rodomi tik neaptarnauti klientai (tie kuriems nebuvo paspaustas mygtukas `Aptarnauta`)
 - [x] Yra funkcija apskaičiavimui, kiek truko apsilankymas (galima senus apsilankymų laikus saugoti atskirame objekte `localStorage`)
 - [ ] Švieslentėje rodoma, kiek laiko liko klientui laukti (vidurkis pagal laukimo laiką per specialistą)
-- [ ] Lankytojo puslapyje numatomas laikas patikslinamas kas 5s (JavaScript arba HTML meta)
-- [ ] Lankytojas, įvedęs savo numerį formoje, mato tik jam skirtą laukti laiką (_lankytojo puslapis_)
+- [x] Lankytojo puslapyje numatomas laikas patikslinamas kas 5s (JavaScript arba HTML meta)
+- [x] Lankytojas, įvedęs savo numerį formoje, mato tik jam skirtą laukti laiką (_lankytojo puslapis_)
 - [x] Švieslentės puslapis yra pritaikytas rodyti per visą ekraną (CSS)
 - [ ] Užregistravus naują klientą rodoma `Užregistruota sėkmingai`
 - [ ] Neradus pradinių duomenų failo (`AJAX` užklausa) rodoma `Nepavyko nuskaityti lankytojų duomenų`
