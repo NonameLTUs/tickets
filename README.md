@@ -59,9 +59,9 @@ Minimalus užduoties įgyvendinimas ( `Level 1` )
 ===============================
 
 **Turi būti 3 puslapiai (HTML failai):**
-- [ ] Administravimo puslapis, skirtas įvesti naują klientą į eilę
-- [ ] Švieslentės puslapis, skirtas rodyti greitai sulauksiančius klientus (aukščiausiai pas specialistą – reiškia klientui eiti)
-- [ ] Specialisto puslapis, kur jis gali pažymėti, kad aptarnavo klientą
+- [x] Administravimo puslapis, skirtas įvesti naują klientą į eilę
+- [x] Švieslentės puslapis, skirtas rodyti greitai sulauksiančius klientus (aukščiausiai pas specialistą – reiškia klientui eiti)
+- [x] Specialisto puslapis, kur jis gali pažymėti, kad aptarnavo klientą
 
 **Techniniai kriterijai:**
 
