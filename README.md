@@ -65,10 +65,10 @@ Minimalus užduoties įgyvendinimas ( `Level 1` )
 
 **Techniniai kriterijai:**
 
-- [ ] Yra `JSON` failas su pavyzdiniu klientu sąrašu
-- [ ] Yra mygtukas išsaugoti pavyzdinius duomenis į `localStorage` (ar `IndexDB`) (_administravimo puslapis_)
-- [ ] Pavyzdiniai duomenys įkraunami dinamiškai neperkraunant naršyklės (`AJAX` užklausa)
-- [ ] Duomenys atvaizduojami surikiuoti pagal specialistą ir tada pagal kliento numerį (_švieslentės puslapis_)
+- [x] Yra `JSON` failas su pavyzdiniu klientu sąrašu
+- [x] Yra mygtukas išsaugoti pavyzdinius duomenis į `localStorage` (ar `IndexDB`) (_administravimo puslapis_)
+- [x] Pavyzdiniai duomenys įkraunami dinamiškai neperkraunant naršyklės (`AJAX` užklausa)
+- [x] Duomenys atvaizduojami surikiuoti pagal specialistą ir tada pagal kliento numerį (_švieslentės puslapis_)
 - [ ] Yra funkcija įrašymui į `localStorage` (_administravimo puslapis_)
 - [ ] Yra funkcija kliento ištrynimui iš objekto (mygtukas `Aptarnauta`) (_specialisto puslapis_)
 - [ ] Duomenų filtravimas: pasirinkimas, kokio specialisto klientus aptarnauti (_specialisto puslapis_)
