@@ -75,5 +75,33 @@ var Client = {
                 return client;
             }
         })
+    },
+    averageWaitingTime: function () {
+        var servicedClients = Client.getByStatus(1);
+        var averages = {};
+        var sessions = {};
+
+        /// Calculate each session duration for each specialist
+        for(let i in servicedClients) {
+            var client = servicedClients[i];
+
+            if(!sessions.hasOwnProperty(client.specialist)) {
+                sessions[client.specialist] = [];
+            }
+
+            sessions[client.specialist].push(client.serviced_at - client.registered_at);
+        }
+
+        /// Calculate average session duration for each specialist
+        for(let i in sessions) {
+            var durations = sessions[i];
+            var sum = durations.reduce(function (previous, current) {
+               return current += previous
+            });
+            var avg = sum / durations.length;
+            averages[i] = avg;
+        }
+
+        return averages;
     }
 }

@@ -60,16 +60,30 @@ $(function () {
         $("table[data-name='clients-list']").show();
         $("table[data-name='clients-list'] tbody td").remove();
 
+        var touchedSpecialists = [];
+
+        for (var i in visibleClients) {
+            touchedSpecialists.push(visibleClients[i].specialist);
+        }
+
+        touchedSpecialists = distinct(touchedSpecialists);
+
         for (var i in visibleClients) {
             var client = visibleClients[i];
 
+            var isHighlighted = touchedSpecialists.indexOf(client.specialist) >= 0;
+
             var template = (
-                "<tr data-id='" + client.id + "'>" +
+                "<tr data-id='" + client.id + "' class='"+(isHighlighted ? 'highlight' : '')+"'>" +
                 "<td class='align-middle'>" + client.specialist + "</td>" +
                 "<td class='align-middle'>" + client.id + "</td>" +
                 "<td><button type='button' class='btn btn-success' data-id='" + client.id + "' data-action='clientServiced'>Serviced</button></td>" +
                 "</tr>"
             );
+
+            if(isHighlighted) {
+                touchedSpecialists.splice(touchedSpecialists.indexOf(client.specialist), 1);
+            }
 
             $("table[data-name='clients-list'] tbody").append(template);
         }
@@ -89,11 +103,11 @@ $(function () {
         return specialists;
     }
 
-    function updateSpecialistsSelect (clients) {
+    function updateSpecialistsSelect(clients) {
         if(!clients.length) {
-            $(".choose-specialist").hide();
+            $("[data-action='chooseSpecialist']").hide();
         } else {
-            $(".choose-specialist").show();
+            $("[data-action='chooseSpecialist']").show();
             var specialists = availableSpecialists(clients)
                 .sort(function (a, b) { return a - b });
 

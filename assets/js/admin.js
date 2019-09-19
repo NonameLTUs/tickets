@@ -21,7 +21,7 @@ $(function () {
     function createClient() {
         var specialist = $("select[name='specialist']").val();
 
-        var allClients = Storage.getItem('clients');
+        var allClients = Client.getAll();
         var allClientsNumbers = allClients.sort(function (a, b) { return b.id - a.id });
 
         var lastNumber;
@@ -35,7 +35,9 @@ $(function () {
         var client = {
             id: lastNumber + 1,
             status: 0,
-            specialist: parseInt(specialist)
+            specialist: parseInt(specialist),
+            registered_at: (new Date()).getTime(),
+            serviced_at: null
         }
 
         allClients.push(client);
