@@ -1,6 +1,6 @@
 $(function () {
     /// Events
-    $(document).on('click', 'button.clients-list__button', function() { serviced(this) });
+    $(document).on('click', "button[data-action='clientServiced']", function() { serviced(this) });
     $(document).on('change', "select[name='specialist']", function() { filterBySpecialist(this) });
 
     function orderClients(clients) {
@@ -33,7 +33,7 @@ $(function () {
         if (0 === allClients.length) {
             loadClients();
         } else {
-            $("li[data-id='" + id + "']").remove();
+            $("tr[data-id='" + id + "']").remove();
         }
 
         updateSpecialistsSelect(allClients);
@@ -42,26 +42,27 @@ $(function () {
     function loadClients() {
         /// Show message if waiting line is empty
         if (0 === Object.keys(visibleClients).length) {
-            if(!$('.message').length) {
-                $("<div class='message'>Empty waiting line</div>").insertBefore(".clients-list");
+            if(!$('.alert').length) {
+                $("<div class='alert alert-primary' role='alert'>Empty waiting line</div>").insertBefore("table[data-name='clients-list']");
             }
 
-            $('.clients-list').hide();
+            $("table[data-name='clients-list']").hide();
         } else {
-            $('.clients-list').show();
-            $('.clients-list li:not(:first)').remove();
+            $("table[data-name='clients-list']").show();
+            $("table[data-name='clients-list'] tbody td").remove();
 
             for (var i in visibleClients) {
                 var client = visibleClients[i];
 
                 var template = (
-                    "<li data-id='" + client.id + "'>" +
-                    "<span class='clients-list__specialist'>" + client.specialist + "</span>" +
-                    "<span class='clients-list__number'>" + client.id + "</span>" +
-                    "<button type='button' class='clients-list__button' data-id='" + client.id + "'>Serviced</button>" +
-                    "</li>"
+                    "<tr data-id='" + client.id + "'>" +
+                    "<td class='align-middle'>" + client.specialist + "</td>" +
+                    "<td class='align-middle'>" + client.id + "</td>" +
+                    "<td><button type='button' class='btn btn-success' data-id='" + client.id + "' data-action='clientServiced'>Serviced</button></td>" +
+                    "</tr>"
                 );
-                $('.clients-list').append(template);
+
+                $("table[data-name='clients-list'] tbody").append(template);
             }
         }
     }
@@ -105,7 +106,7 @@ $(function () {
         if("all" === specialist) {
             visibleClients = orderClients(Storage.getItem('clients'));
         } else {
-            visibleClients = allClients.filter(function (client) { return client.specialist == specialist });
+            visibleClients = orderClients(allClients.filter(function (client) { return client.specialist == specialist }));
         }
 
         loadClients();

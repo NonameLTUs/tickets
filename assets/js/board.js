@@ -24,12 +24,13 @@ $(function() {
                 var client = clients[i];
 
                 var template = (
-                    "<li data-id='" + client.id + "'>" +
-                    "<span class='clients-list__specialist'>" + client.specialist + "</span>" +
-                    "<span class='clients-list__number'>" + client.id + "</span>" +
-                    "</li>"
+                    "<tr data-id='" + client.id + "'>" +
+                    "<td class='align-middle'>" + client.specialist + "</td>" +
+                    "<td class='align-middle'>" + client.id + "</td>" +
+                    "</tr>"
                 );
-                $('.clients-list').append(template);
+
+                $("table[data-name='clients-list'] tbody").append(template);
             }
         }
     }

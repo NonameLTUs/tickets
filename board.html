@@ -2,22 +2,46 @@
 
 <head>
     <title>NFQ - Board</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/common.css" />
-    <link rel="stylesheet" type="text/css" href="assets/css/board.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/storage.js"></script>
     <script type="text/javascript" src="assets/js/board.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <ul class="clients-list">
-            <li class="clients-list__header">
-                <span class="clients-list__header-specialist">Specialist</span>
-                <span class="clients-list__header-number">Number</span>
-            </li>
-        </ul>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="board.html">Board</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="specialist.html">Specialist page</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin.html">Admin page</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <h2 class="mt-5 mb-5">Board</h2>
+
+        <table class="table" data-name="clients-list">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Specialist</th>
+                    <th scope="col">Number</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
 </body>
 
