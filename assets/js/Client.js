@@ -99,11 +99,11 @@ var Client = {
         clients.push(client);
         Client.set(clients);
     },
-    orderBySpecialistAndNumber: function (clients) {
-        /// Order clients by specialist first then number
+    orderBySpecialistAndRow: function (clients) {
+        /// Order clients by specialist first then row
 
         clients.sort(function (a, b) {
-            return a.specialist - b.specialist || a.number - b.number;
+            return a.specialist - b.specialist || a.row - b.row;
         });
 
         return clients;

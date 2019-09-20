@@ -6,7 +6,7 @@ $(function () {
     $("select[name='specialist']").focus();
 
     var allClients = Client.getByStatus(0);
-    var visibleClients = Client.orderBySpecialistAndNumber(allClients);
+    var visibleClients = Client.orderBySpecialistAndRow(allClients);
 
     loadClients();
     updateSpecialistsSelect(allClients);
