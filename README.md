@@ -102,8 +102,8 @@ Rekomenduojamas užduoties įgyvendinimas ( `Level 2` )
 - [x] Lankytojo puslapyje numatomas laikas patikslinamas kas 5s (JavaScript arba HTML meta)
 - [x] Lankytojas, įvedęs savo numerį formoje, mato tik jam skirtą laukti laiką (_lankytojo puslapis_)
 - [x] Švieslentės puslapis yra pritaikytas rodyti per visą ekraną (CSS)
-- [ ] Užregistravus naują klientą rodoma `Užregistruota sėkmingai`
-- [ ] Neradus pradinių duomenų failo (`AJAX` užklausa) rodoma `Nepavyko nuskaityti lankytojų duomenų`
+- [x] Užregistravus naują klientą rodoma `Užregistruota sėkmingai`
+- [x] Neradus pradinių duomenų failo (`AJAX` užklausa) rodoma `Nepavyko nuskaityti lankytojų duomenų`
 - [ ] Yra pritaikyta greitam naujų lankytojų įvedimui (JavaScript `focus`)
 - [x] Naudojamas gražesnis dizainas (Pvz: google Material UI, Bootstrap)
 
