@@ -13,34 +13,18 @@ $(function () {
                     if(null !== response.error) {
                         alert(response.error);
                     } else {
-                        Storage.setItem('clients', response.result);
+                        Client.set(response.result);
                     }
+                })
+                .catch(function () {
+                    alert('Unable to parse clients data!');
                 });
     }
 
     function createClient() {
         var specialist = $("select[name='specialist']").val();
 
-        var allClients = Client.getAll();
-        var allClientsNumbers = allClients.sort(function (a, b) { return b.id - a.id });
-
-        var lastNumber;
-        if(0 === (allClientsNumbers || []).length) {
-            lastNumber = 1;
-        } else {
-            lastNumber = allClientsNumbers[0].id;
-        }
-
-        /// Create client object
-        var client = {
-            id: lastNumber + 1,
-            status: 0,
-            specialist: parseInt(specialist),
-            registered_at: (new Date()).getTime(),
-            serviced_at: null
-        }
-
-        allClients.push(client);
-        Storage.setItem('clients', allClients);
+        Client.create(specialist);
+        alert('Client registered!');
     }
 });

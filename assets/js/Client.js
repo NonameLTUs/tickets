@@ -48,6 +48,33 @@ var Client = {
         Storage.setItem('clients', clients);
         return null;
     },
+    create: function (specialist) {
+        var clients = Client.getAll();
+        var clientsNumbers = clients.sort(function (a, b) {
+            return b.id - a.id
+        });
+
+        var lastNumber;
+        if (0 === (clientsNumbers || []).length) {
+            lastNumber = 1;
+        } else {
+            lastNumber = clientsNumbers[0].id;
+        }
+
+        /// Create client object
+        var client = {
+            id: lastNumber + 1,
+            status: 0,
+            specialist: parseInt(specialist),
+            registered_at: (new Date()).getTime(),
+            serviced_at: null
+        }
+
+        clients.push(client);
+
+        Client.set(clients);
+        return;
+    },
     findIndex: function (client) {
         var allClients = Client.getAll();
 
