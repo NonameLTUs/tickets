@@ -1,18 +1,9 @@
 $(function() {
     loadClients();
 
-    function orderClients(clients) {
-        /// Order clients by specialist and number
-        clients.sort(function (a, b) {
-            return a.specialist - b.specialist || a.id - b.id;
-        });
-
-        return clients;
-    }
-
     function loadClients() {
         /// Load clients from localStorage
-        var clients = orderClients(Storage.getItem('clients') || []);
+        var clients = Client.orderBySpecialistAndNumber(Client.getByStatus(0));
 
         /// Show message if waiting line is empty
         if(0 === Object.keys(clients).length) {
@@ -37,7 +28,7 @@ $(function() {
                 var template = (
                     "<tr data-id='" + client.id + "' class='" + (isHighlighted ? 'highlight' : '') + "'>" +
                     "<td class='align-middle'>" + client.specialist + "</td>" +
-                    "<td class='align-middle'>" + client.id + "</td>" +
+                    "<td class='align-middle'>" + client.number + "</td>" +
                     "<td class='align-middle'>" + Client.approximateWaitingTime(client) + "</td>" +
                     "</tr>"
                 );

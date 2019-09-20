@@ -5,17 +5,8 @@ $(function () {
 
     $("select[name='specialist']").focus();
 
-    function orderClients(clients) {
-        /// Order clients by specialist and number
-        clients.sort(function (a, b) {
-            return a.specialist - b.specialist || a.id - b.id;
-        });
-
-        return clients;
-    }
-
     var allClients = Client.getByStatus(0);
-    var visibleClients = orderClients(allClients);
+    var visibleClients = Client.orderBySpecialistAndNumber(allClients);
 
     loadClients();
     updateSpecialistsSelect(allClients);
@@ -78,7 +69,7 @@ $(function () {
             var template = (
                 "<tr data-id='" + client.id + "' class='"+(isHighlighted ? 'highlight' : '')+"'>" +
                 "<td class='align-middle'>" + client.specialist + "</td>" +
-                "<td class='align-middle'>" + client.id + "</td>" +
+                "<td class='align-middle'>" + client.number + "</td>" +
                 "<td><button type='button' class='btn btn-success' data-id='" + client.id + "' data-action='clientServiced'>Serviced</button></td>" +
                 "</tr>"
             );
@@ -110,8 +101,7 @@ $(function () {
             $("[data-action='chooseSpecialist']").hide();
         } else {
             $("[data-action='chooseSpecialist']").show();
-            var specialists = availableSpecialists(clients)
-                .sort(function (a, b) { return a - b });
+            var specialists = availableSpecialists(clients).sort(function (a, b) { return a - b });
 
             
             $("select[name='specialist'] option[value!='all']").remove();

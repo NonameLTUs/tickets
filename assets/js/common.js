@@ -7,3 +7,7 @@ function distinct (array) {
 
       return unique;
 }
+
+function id () {
+    return Math.random().toString(36).substr(2, 9);
+}
