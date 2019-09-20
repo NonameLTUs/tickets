@@ -119,38 +119,52 @@ var Client = {
         return clientInRow;
     },
     averageWaitingTime: function () {
-        var servicedClients = Client.getByStatus(1);
-        var averages = {};
-        var sessions = {};
-
-        /// Calculate each session duration for each specialist
-        for(let i in servicedClients) {
-            var client = servicedClients[i];
-
-            if(!sessions.hasOwnProperty(client.specialist)) {
-                sessions[client.specialist] = [];
-            }
-
-            sessions[client.specialist].push(client.serviced_at - client.registered_at);
+        var clients = Client.getByStatus(1);
+        
+        if(0 === clients.length) {
+            return null;
         }
 
-        /// Calculate average session duration for each specialist
-        for(let i in sessions) {
-            var durations = sessions[i];
-            var sum = durations.reduce(function (previous, current) {
-               return current += previous
-            });
-            var avg = sum / durations.length;
-            averages[i] = avg;
+        var durations = [];
+
+        for(let i in clients) {
+            durations.push(clients[i].serviced_at/1000 - clients[i].registered_at);
         }
 
-        return averages;
+        var sum = durations.reduce(function (previous, current) {
+            return current += previous
+        });
+        var avg = sum / clients.length;
+        var average = avg;
+
+        return average;
     },
     approximateWaitingTime: function (client) {
-        var numberInRow = Client.clientInRow(client);
-        var seconds = Client.averageWaitingTime()[client.specialist] * numberInRow / 1000;
-        var minutes = Math.floor(seconds / 60);
+        var averageWaitingTime = Client.averageWaitingTime();
+        if(null === averageWaitingTime) {
+            return 'N/A';
+        }
 
-        return (Math.floor(minutes) + ':' + Math.round(seconds - minutes * 60));
+        if(0 >= averageWaitingTime) {
+            return 'Soon';
+        }
+
+        var numberInRow = Client.clientInRow(client);
+        var seconds = averageWaitingTime * numberInRow / 1000;
+        var minutes = Math.floor(seconds / 60);
+        var hours = Math.floor(minutes / 60);
+
+        var displayHours = ("0" + hours).slice(-2);
+        var displayMinutes = ("0" + Math.floor(minutes - hours * 60)).slice(-2);
+        var displaySeconds = ("0" + Math.round(seconds - minutes * 60)).slice(-2);
+
+        var result = '';
+        if(0 < hours) {
+            result += displayHours + ":";
+        }
+        result += displayMinutes + ":";
+        result += displaySeconds;
+
+        return result;
     }
 }

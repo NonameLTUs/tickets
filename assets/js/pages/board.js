@@ -20,15 +20,31 @@ $(function() {
             $('.clients-list').hide();
         } else {
             $('.clients-list').show();
+
+            var touchedSpecialists = [];
+
+            for (var i in clients) {
+                touchedSpecialists.push(clients[i].specialist);
+            }
+
+            touchedSpecialists = distinct(touchedSpecialists);
+
             for (var i in clients) {
                 var client = clients[i];
 
+                var isHighlighted = touchedSpecialists.indexOf(client.specialist) >= 0;
+
                 var template = (
-                    "<tr data-id='" + client.id + "'>" +
+                    "<tr data-id='" + client.id + "' class='" + (isHighlighted ? 'highlight' : '') + "'>" +
                     "<td class='align-middle'>" + client.specialist + "</td>" +
                     "<td class='align-middle'>" + client.id + "</td>" +
+                    "<td class='align-middle'>" + Client.approximateWaitingTime(client) + "</td>" +
                     "</tr>"
                 );
+
+                if (isHighlighted) {
+                    touchedSpecialists.splice(touchedSpecialists.indexOf(client.specialist), 1);
+                }
 
                 $("table[data-name='clients-list'] tbody").append(template);
             }
