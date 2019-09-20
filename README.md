@@ -98,13 +98,13 @@ Rekomenduojamas užduoties įgyvendinimas ( `Level 2` )
 - [x] Švieslentėje fono spalva išskiriamas dabar aptarnaujamas klientas (pirmas elementas pagal specialistą)
 - [x] Švieslentėje žemiau rodomi tik neaptarnauti klientai (tie kuriems nebuvo paspaustas mygtukas `Aptarnauta`)
 - [x] Yra funkcija apskaičiavimui, kiek truko apsilankymas (galima senus apsilankymų laikus saugoti atskirame objekte `localStorage`)
-- [ ] Švieslentėje rodoma, kiek laiko liko klientui laukti (vidurkis pagal laukimo laiką per specialistą)
+- [x] Švieslentėje rodoma, kiek laiko liko klientui laukti (vidurkis pagal laukimo laiką per specialistą)
 - [x] Lankytojo puslapyje numatomas laikas patikslinamas kas 5s (JavaScript arba HTML meta)
 - [x] Lankytojas, įvedęs savo numerį formoje, mato tik jam skirtą laukti laiką (_lankytojo puslapis_)
 - [x] Švieslentės puslapis yra pritaikytas rodyti per visą ekraną (CSS)
 - [x] Užregistravus naują klientą rodoma `Užregistruota sėkmingai`
 - [x] Neradus pradinių duomenų failo (`AJAX` užklausa) rodoma `Nepavyko nuskaityti lankytojų duomenų`
-- [ ] Yra pritaikyta greitam naujų lankytojų įvedimui (JavaScript `focus`)
+- [x] Yra pritaikyta greitam naujų lankytojų įvedimui (JavaScript `focus`)
 - [x] Naudojamas gražesnis dizainas (Pvz: google Material UI, Bootstrap)
 
 Siūloma (papildoma) literatūra:
