@@ -6,6 +6,8 @@ $(function () {
     });
     $(document).on('click', "button[data-action='loadClientData']", onSubmit);
 
+    $('#number').focus();
+
     updateDOM(null, null);
 
     var updateDataInterval;

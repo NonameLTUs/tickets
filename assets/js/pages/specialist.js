@@ -3,6 +3,8 @@ $(function () {
     $(document).on('click', "button[data-action='clientServiced']", function() { serviced(this) });
     $(document).on('change', "select[name='specialist']", function() { filterBySpecialist(this) });
 
+    $("select[name='specialist']").focus();
+
     function orderClients(clients) {
         /// Order clients by specialist and number
         clients.sort(function (a, b) {

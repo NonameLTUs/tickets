@@ -3,6 +3,8 @@ $(function () {
     $(document).on('click', "[data-action='loadDefaultClients']", loadDefaultClients);
     $(document).on('click', "[data-action='createClient']", createClient);
 
+    $("select[name='specialist']").focus();
+
     function loadDefaultClients () {
             var url = "http://localhost/nfq/back/index.php?endpoint=getClients";
             $.ajax({
