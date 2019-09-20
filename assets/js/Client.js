@@ -46,7 +46,7 @@ var Client = {
     },
     set: function (clients) {
         Storage.setItem('clients', clients);
-        return null;
+        return;
     },
     create: function (specialist) {
         var clients = Client.getAll();
