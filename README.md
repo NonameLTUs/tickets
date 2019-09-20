@@ -132,7 +132,7 @@ Galimas užduoties praplėtimas ( `Level 3` )
 - [ ] Kalendoriaus išdėstymas prisitaiko nuo ekrano (`media` CSS)
 - [ ] Spalvomis išryškinama mažiausiai užimta diena
 - [ ] Spalvomis išryškinama (ar tekstu parodoma) mažiausiai užimta valanda konkrečioje dienoje
-- [ ] Lankytojui sugeneruojamas unikalus kodas (apsauga nuo sekančio skaičiaus įvedant formoje)
+- [x] Lankytojui sugeneruojamas unikalus kodas (apsauga nuo sekančio skaičiaus įvedant formoje)
 - [ ] Lankytojas mato mygtuką pavėlinti (sukeičia su už juo esančiu žmogumi)
 - [ ] Pavėlinimas negalimas, jei lankytojas yra paskutinis eilėje
 - [ ] Lankytojas gali atšaukti susitikimą pas specialistą (įrašymas į `localStorage`)
