@@ -24,7 +24,7 @@ $(function () {
     }
 
     function loadClientData (number) {
-        var client = Client.findById(number);
+        var client = Client.findByNumber(number);
 
         if("undefined" === typeof client) {
             updateDOM(null, null, null);

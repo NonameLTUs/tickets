@@ -155,6 +155,15 @@ var Client = {
             }
         })
     },
+    findByNumber: function (number) {
+        var clients = Client.getAll();
+
+        return clients.find(function (client) {
+            if (client.number == number) {
+                return client;
+            }
+        })
+    },
     clientInRow: function (client, clients = null) {
         var allClients;
 
