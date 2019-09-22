@@ -146,6 +146,13 @@ var Client = {
 
         return clients;
     },
+    getLastServicingTime: function () {
+        return Storage.getItem('last_servicing_time');
+    },
+    updateLastServicingTime: function () {
+        Storage.setItem('last_servicing_time', (new Date()).getTime());
+        return;
+    },
     findById: function (id) {
         var clients = Client.getAll();
 
@@ -179,6 +186,21 @@ var Client = {
 
         return clientInRow;
     },
+    lastRow: function (client, clients = null) {
+        var allClients;
+
+        if (null !== clients) {
+            allClients = clients;
+        } else {
+            allClients = Client.orderByRow(Client.getBySpecialist(client.specialist, Client.getByStatus(0)));
+        }
+
+        var lastRow = allClients.findIndex(function (item) {
+            return item.id == client.id
+        });
+
+        return lastRow;
+    },
     averageWaitingTime: null,
     calculateAverageWaitingTime: function () {
         function calc() {
@@ -199,7 +221,7 @@ var Client = {
             });
             var average = sum / clients.length;
 
-            Client.averageWaitingTime = Math.ceil(average/1000);
+            Client.averageWaitingTime = average;
         }
 
         calc();
@@ -209,15 +231,22 @@ var Client = {
     approximateWaitingTime: function (client) {
         var averageWaitingTime = Client.averageWaitingTime;
         if(null === averageWaitingTime) {
-            return 'N/A';
+            return 'Calculating';
         }
 
         if(0 >= averageWaitingTime) {
             return 'Soon';
         }
 
+        var lastServicingTime = Client.getLastServicingTime();
+        var currentTime = (new Date).getTime();
         var numberInRow = Client.clientInRow(client);
-        var seconds = averageWaitingTime * numberInRow;
+        var miliseconds = (lastServicingTime + averageWaitingTime * numberInRow) - currentTime;
+        var seconds =  miliseconds / 1000;
+
+        if(0 >= miliseconds) {
+            return 'On service';
+        }
 
         var minutes = Math.floor(seconds / 60);
         var hours = Math.floor(minutes / 60);
@@ -236,3 +265,6 @@ var Client = {
 }
 
 Client.calculateAverageWaitingTime();
+if("undefined" === typeof Client.getLastServicingTime()) {
+    Client.updateLastServicingTime();
+}
