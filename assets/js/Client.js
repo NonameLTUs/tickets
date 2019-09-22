@@ -77,7 +77,6 @@ var Client = {
     },
     set: function (clients) {
         Storage.setItem('clients', clients);
-        return;
     },
     create: function (specialist) {
         var clients = Client.getAll();
@@ -117,8 +116,13 @@ var Client = {
             }
         });
     },
-    findIndex: function (client) {
-        var allClients = Client.getVisibleBySpecialist(client.specialist);
+    findIndex: function (client, clients = null) {
+        var allClients;
+        if(null === clients) {
+            allClients = Client.getAll();
+        } else {
+            allClients = clients;
+         }
 
         var indexOfClient = allClients.findIndex(function (object) {
             if(object.id == client.id) {

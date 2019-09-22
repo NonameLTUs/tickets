@@ -5,11 +5,17 @@ $(function () {
 
     $("select[name='specialist']").focus();
 
-    var allClients = Client.getByStatus(0);
-    var visibleClients = Client.orderBySpecialistAndRow(allClients);
+    var allClients;
+    var visibleClients;
 
+    loadClientsData();
     loadClients();
     updateSpecialistsSelect(allClients);
+
+    function loadClientsData() {
+        allClients = Client.getByStatus(0);
+        visibleClients = Client.orderBySpecialistAndRow(allClients);
+    }
 
     function updateServicedUser(client) {
         var updatedClient = Object.assign({}, client);
@@ -18,7 +24,7 @@ $(function () {
         updatedClient.serviced_at = (new Date()).getTime();
 
         return updatedClient;
-    }
+    } 
 
     function serviced(button) {
         var id = $(button).attr('data-id');
@@ -26,7 +32,7 @@ $(function () {
         var client = Client.findById(id);
 
         Client.update(client, updateServicedUser(client));
-        allClients = Client.getByStatus(0);
+        loadClientsData();
         filterBySpecialist();
 
         $("tr[data-id='" + id + "']").remove();
@@ -121,12 +127,14 @@ $(function () {
         } else {
             specialist = $(select).val();
         }
-
+        
         if(0 < allClients.length) {
             if("all" === specialist) {
-                visibleClients = orderClients(allClients);
+                visibleClients = Client.orderBySpecialistAndRow(allClients);
             } else {
-                visibleClients = orderClients(allClients.filter(function (client) { return client.specialist == specialist }));
+                visibleClients = Client.orderBySpecialistAndRow(allClients.filter(function (client) {
+                    return client.specialist == specialist
+                }));
             }
         } else {
             visibleClients = [];
