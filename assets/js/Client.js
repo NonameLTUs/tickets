@@ -187,7 +187,7 @@ var Client = {
         return;
     },
     setRows: function (clients, specialist) {
-        var rows = {};
+        var rows = Client.getRows();
         rows[specialist] = clients;
 
         Storage.setItem('clients_rows', rows);
@@ -195,11 +195,19 @@ var Client = {
         return;
     },
     updateRow: function (client, action) {
-        var rows = Client.getRows();
+        var rows = Client.getRows(client.specialist);
 
-        if("down" === action) {
+        if("remove" === action) {
+            var index = rows.findIndex(function (row) {
+                return row.id === client.id;
+            });
 
+            if(index > -1) {
+                rows.splice(index, 1);
+            }
         }
+
+        Client.setRows(rows, client.specialist);
     },
     findById: function (id) {
         var clients = Client.getAll();

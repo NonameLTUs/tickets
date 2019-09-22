@@ -42,6 +42,7 @@ $(function () {
         }
  
         Client.updateLastServicingTime();
+        Client.updateRow(client, "remove");
         updateSpecialistsSelect(allClients);
     }
 
