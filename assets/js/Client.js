@@ -188,10 +188,9 @@ var Client = {
             var sum = durations.reduce(function (previous, current) {
                 return current += previous
             });
-            var avg = sum / clients.length;
-            var average = avg;
+            var average = sum / clients.length;
 
-            Client.averageWaitingTime = average;
+            Client.averageWaitingTime = Math.ceil(average/1000);
         }
 
         calc();
