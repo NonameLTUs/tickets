@@ -7,10 +7,12 @@ $(function() {
 
         /// Show message if waiting line is empty
         if(0 === Object.keys(clients).length) {
-            $("<div class='message'>Empty waiting line</div>").insertBefore(".clients-list");
-            $('.clients-list').hide();
+            if (!$('.alert').length) {
+                $("<div class='alert alert-primary' role='alert'>Empty waiting line</div>").insertBefore("table[data-name='clients-list']");
+            }
+            $("table[data-name='clients-list']").hide();
         } else {
-            $('.clients-list').show();
+            $("table[data-name='clients-list']").show();
 
             var touchedSpecialists = [];
 
