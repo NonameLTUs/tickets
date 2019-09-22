@@ -78,17 +78,6 @@ var Client = {
 
         return clients.flat();
     },
-    getLastRow: function () {
-        var clients = Client.getAll();
-
-        var clientsByRows = Client.orderByRow(clients);
-
-        if (0 === clientsByRows.length) {
-            return 0;
-        } else {
-            return clientsByRows[0].row;
-        }
-    },
     set: function (clients) {
         Storage.setItem('clients', clients);
     },
@@ -96,14 +85,12 @@ var Client = {
         var clients = Client.getAll();
 
         var lastNumber = Client.getLastNumber();
-        var lastRow = Client.getLastRow();
 
         /// Create client object
         var client = {
             id: id(),
             number: lastNumber + 1,
             status: 0,
-            row: lastRow + 1,
             specialist: parseInt(specialist),
             registered_at: (new Date()).getTime(),
             serviced_at: null
