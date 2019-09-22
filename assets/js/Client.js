@@ -64,6 +64,20 @@ var Client = {
             return clientsNumbers[0].number;
         }
     },
+    getNthClientsInRow: function (nth, count = 1) {
+        var rows = Client.getRows();
+        var clients = [];
+        var specialists = Object.keys(rows);
+
+        for (let i in specialists) {
+            specialist = specialists[i];
+            if ((rows[specialist] || []).length) {
+                clients.push(rows[specialist].slice(nth, nth + count));
+            }
+        }
+
+        return clients.flat();
+    },
     getLastRow: function () {
         var clients = Client.getAll();
 

@@ -3,7 +3,10 @@ $(function() {
 
     function loadClients() {
         /// Load clients from localStorage
-        var clients = Client.orderBySpecialistAndRow(Client.getByStatus(0));
+        var clients = [
+            Client.getNthClientsInRow(0),
+            Client.getNthClientsInRow(1, 2)
+        ].flat();
 
         /// Show message if waiting line is empty
         if(0 === Object.keys(clients).length) {

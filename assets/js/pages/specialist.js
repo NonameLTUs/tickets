@@ -41,7 +41,8 @@ $(function () {
             loadClients();
         }
  
-       updateSpecialistsSelect(allClients);
+        Client.updateLastServicingTime();
+        updateSpecialistsSelect(allClients);
     }
 
     function loadClients() {
