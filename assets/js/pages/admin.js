@@ -26,7 +26,7 @@ $(function () {
     function createClient() {
         var specialist = $("select[name='specialist']").val();
 
-        Client.create(specialist);
-        alert('Client registered!');
+        var client = Client.create(specialist);
+        alert('Client successfully registered! Number: '+ client.number);
     }
 });

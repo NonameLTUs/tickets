@@ -97,6 +97,8 @@ var Client = {
 
         clients.push(client);
         Client.set(clients);
+
+        return client;
     },
     orderBySpecialistAndRow: function (clients) {
         /// Order clients by specialist first then row
