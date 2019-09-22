@@ -88,7 +88,7 @@ Rekomenduojamas užduoties įgyvendinimas ( `Level 2` )
 > Vertinama, kai yra padarytos pirmos dalys
 
 **Papildymas puslapyje**
-- [ ] Švieslentės puslapis, skirtas rodyti greitai sulauksiančius klientus (rodoma tik naujausia dalis eilės)
+- [x] Švieslentės puslapis, skirtas rodyti greitai sulauksiančius klientus (rodoma tik naujausia dalis eilės)
 
 **Extra puslapis**
 - [x] Lankytojo puslapis, kur jis mato laiką iki savo eilės (nebūtina žiūrėti į švieslentę)
