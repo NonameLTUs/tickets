@@ -153,6 +153,51 @@ var Client = {
         Storage.setItem('last_servicing_time', (new Date()).getTime());
         return;
     },
+    getRows: function (specialist = null) {
+        var rows = Storage.getItem('clients_rows') || {};
+        
+        if (null === specialist) {
+            return rows;
+        } else {
+            if(rows.hasOwnProperty(specialist)) {
+                return rows[specialist];
+            } else {
+                return [];
+            }
+        }
+    },
+    initRows: function () {
+        var clients = Client.getByStatus(0);
+        var rows = {};
+
+        for(let i in clients) {
+            var client = clients[i];
+            if(!rows.hasOwnProperty(client.specialist)) {
+                rows[client.specialist] = [];
+            }
+
+            rows[client.specialist].push(client);
+        }
+
+        Storage.setItem('clients_rows', rows);
+
+        return;
+    },
+    setRows: function (clients, specialist) {
+        var rows = {};
+        rows[specialist] = clients;
+
+        Storage.setItem('clients_rows', rows);
+
+        return;
+    },
+    updateRow: function (client, action) {
+        var rows = Client.getRows();
+
+        if("down" === action) {
+
+        }
+    },
     findById: function (id) {
         var clients = Client.getAll();
 
@@ -245,6 +290,10 @@ var Client = {
         var seconds =  miliseconds / 1000;
 
         if(0 >= miliseconds) {
+            if(client.row > 0) {
+                return 'Soon';
+            }
+            
             return 'On service';
         }
 
@@ -253,7 +302,7 @@ var Client = {
 
         var displayHours = ("0" + hours).slice(-2);
         var displayMinutes = ("0" + Math.floor(minutes - hours * 60)).slice(-2);
-        var displaySeconds = ("0" + Math.round(seconds - minutes * 60)).slice(-2);
+        var displaySeconds = ("0" + Math.floor(seconds - minutes * 60)).slice(-2);
 
         var result = '';
         result += displayHours + ":";
@@ -265,6 +314,9 @@ var Client = {
 }
 
 Client.calculateAverageWaitingTime();
+
 if("undefined" === typeof Client.getLastServicingTime()) {
     Client.updateLastServicingTime();
 }
+
+Client.initRows();
