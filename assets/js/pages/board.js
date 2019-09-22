@@ -31,7 +31,7 @@ $(function() {
                     "<tr data-id='" + client.id + "' class='" + (isHighlighted ? 'highlight' : '') + "'>" +
                     "<td class='align-middle'>" + client.specialist + "</td>" +
                     "<td class='align-middle'>" + client.number + "</td>" +
-                    "<td class='align-middle'>" + Client.approximateWaitingTime(client) + "</td>" +
+                    "<td class='align-middle' data-name='approximateWaitingTime'>" + Client.approximateWaitingTime(client) + "</td>" +
                     "</tr>"
                 );
 
@@ -43,4 +43,13 @@ $(function() {
             }
         }
     }
+
+    setInterval(function () {
+        var clients = Client.orderBySpecialistAndRow(Client.getByStatus(0));
+        
+        for (var i in clients) {
+            var client = clients[i];
+            $("tr[data-id='" + client.id + "'] td[data-name='approximateWaitingTime']").html(Client.approximateWaitingTime(client));
+        }
+    }, 1000);
 });
