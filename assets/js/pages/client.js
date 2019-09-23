@@ -28,7 +28,7 @@ $(function () {
 
         if("undefined" === typeof client) {
             updateDOM(null, null, null);
-            alert('Client not found!');
+            alert('Klientas nerastas!');
             return;
         }
 

@@ -11,7 +11,7 @@ $(function() {
         /// Show message if waiting line is empty
         if(0 === Object.keys(clients).length) {
             if (!$('.alert').length) {
-                $("<div class='alert alert-primary' role='alert'>Empty waiting line</div>").insertBefore("table[data-name='clients-list']");
+                $("<div class='alert alert-primary' role='alert'>Klientų nėra</div>").insertBefore("table[data-name='clients-list']");
             }
             $("table[data-name='clients-list']").hide();
         } else {

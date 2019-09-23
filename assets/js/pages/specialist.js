@@ -50,7 +50,7 @@ $(function () {
         /// Show message if waiting line is empty
         if (0 === Object.keys(visibleClients).length) {
             if(!$('.alert').length) {
-                $("<div class='alert alert-primary' role='alert'>Empty waiting line</div>").insertBefore("table[data-name='clients-list']");
+                $("<div class='alert alert-primary' role='alert'>Klientų nėra</div>").insertBefore("table[data-name='clients-list']");
             }
 
             $("table[data-name='clients-list']").hide();
@@ -74,11 +74,16 @@ $(function () {
 
             var isHighlighted = touchedSpecialists.indexOf(client.specialist) >= 0;
 
+            var servicedButton = '';
+            if(isHighlighted) {
+                servicedButton = "<button type='button' class='btn btn-success' data-id='" + client.id + "' data-action='clientServiced'>Aptarnautas</button>";
+            }
+
             var template = (
                 "<tr data-id='" + client.id + "' class='"+(isHighlighted ? 'highlight' : '')+"'>" +
                 "<td class='align-middle'>" + client.specialist + "</td>" +
                 "<td class='align-middle'>" + client.number + "</td>" +
-                "<td><button type='button' class='btn btn-success' data-id='" + client.id + "' data-action='clientServiced'>Serviced</button></td>" +
+                "<td>" + servicedButton + "</td>" +
                 "</tr>"
             );
 

@@ -19,7 +19,7 @@ $(function () {
                     }
                 })
                 .catch(function () {
-                    alert('Unable to parse clients data!');
+                    alert('Nepavyko gauti pavyzdinių duomenų!');
                 });
     }
 
@@ -27,6 +27,6 @@ $(function () {
         var specialist = $("select[name='specialist']").val();
 
         var client = Client.create(specialist);
-        alert('Client successfully registered! Number: '+ client.number);
+        alert('Klientas sėkmingai pridėtas! Numeris: '+ client.number);
     }
 });

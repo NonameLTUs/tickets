@@ -2,6 +2,7 @@
 
 <head>
     <title>NFQ - Client</title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/common.js"></script>
@@ -21,43 +22,43 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="board.html">Board</a>
+                        <a class="nav-link" href="board.html">Švieslentė</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="client.html">Client page</a>
+                        <a class="nav-link" href="client.html">Kliento puslapis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="specialist.html">Specialist page</a>
+                        <a class="nav-link" href="specialist.html">Specialisto puslapis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="admin.html">Admin page</a>
+                        <a class="nav-link" href="admin.html">Administratoriaus puslapis</a>
                     </li>
                 </ul>
             </div>
         </nav>
 
-        <h2 class="mt-5 mb-5">Client page</h2>
+        <div class="mt-3"></div>
 
         <form class="form-row mb-3" data-name="chooseSpecialist">
             <div class="col-2">
-                <label for="number" class="col-form-label">Your number</label>
+                <label for="number" class="col-form-label">Jūsų numeris</label>
             </div>
             <div class="col-2">
                 <input type="number" name="number" id="number" class="form-control" required />
             </div>
             <div class="col-2">
-                <button type="button" class="btn btn-primary" data-action="loadClientData">Load</button>
+                <button type="button" class="btn btn-primary" data-action="loadClientData">Rodyti informaciją</button>
             </div>
         </div>
 
-        <div class="alert alert-primary" role="alert" data-name="yourTurnAlert" style="display: none">It is your turn</div>
-        <div class="alert alert-success" role="alert" data-name="servicedAlert" style="display: none">You have been serviced!</div>
+        <div class="alert alert-primary" role="alert" data-name="yourTurnAlert" style="display: none">Jūsų eilė eiti!</div>
+        <div class="alert alert-success" role="alert" data-name="servicedAlert" style="display: none">Jūs jau buvote aptarnautas!</div>
 
         <div data-name="num-in-que" style="display: none">
-            <span>You are</span> <span class="badge badge-secondary" data-name="num"></span> <span>in a row</span>
+            <span>Jūs esate</span> <span class="badge badge-secondary" data-name="num"></span> <span>eilėje</span>
         </div>
         <div data-name="approximate-waiting-time" style="display: none">
-            <span>You will go after</span> <span class="badge badge-secondary" data-name="time"></span>
+            <span>Jūs eisite po</span> <span class="badge badge-secondary" data-name="time"></span>
         </div>
 
     </div>

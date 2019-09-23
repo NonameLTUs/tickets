@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
-    <title>NFQ - Admin</title>
+    <title>NFQ - Administratorius</title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/js/common.js"></script>
@@ -19,28 +20,26 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="board.html">Board</a>
+                        <a class="nav-link" href="board.html">Švieslentė</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="client.html">Client page</a>
+                        <a class="nav-link" href="client.html">Kliento puslapis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="specialist.html">Specialist page</a>
+                        <a class="nav-link" href="specialist.html">Specialisto puslapis</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="admin.html">Admin page</a>
+                        <a class="nav-link" href="admin.html">Administratoriaus puslapis</a>
                     </li>
                 </ul>
             </div>
         </nav>
-        
-        <h2 class="mt-5">Admin</h2>
 
-        <button type="button" class="btn btn-secondary mt-5 mb-3" data-action="loadDefaultClients">Load default clients</button>
+        <button type="button" class="btn btn-secondary mt-5 mb-3" data-action="loadDefaultClients">Užkrauti pavyzdinius duomenis</button>
 
         <div class="form-row">
             <div class="col-2">
-                <label for="specialist" class="col-form-label">Choose specialist</label>
+                <label for="specialist" class="col-form-label">Pasirinkti specialistą</label>
             </div>
             <div class="col-1">
                 <select name="specialist" id="specialist" class="form-control">
@@ -50,7 +49,7 @@
                 </select>
             </div>
             <div class="col">
-                <button type="button" class="btn btn-primary ml-3" data-action="createClient">Create client</button>
+                <button type="button" class="btn btn-primary ml-3" data-action="createClient">Pridėti klientą</button>
             </div>
         </div>
     </div>
