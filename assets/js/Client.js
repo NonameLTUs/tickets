@@ -325,6 +325,6 @@ if("undefined" === typeof Client.getLastServicingTime()) {
     Client.updateLastServicingTime();
 }
 
-if (0 <= Client.getRows().length) {
+if (0 <= Object.keys(Client.getRows()).length) {
     Client.initRows();
 }
