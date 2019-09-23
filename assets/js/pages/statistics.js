@@ -1,12 +1,15 @@
 $(function () {
-    var nowDate = new Date;
-    var nowYear = nowDate.getFullYear();
-    var nowMonth = nowDate.getMonth() + 1; // +1, because array starts counting from 0
+    $(document).on('change', "select[name='specialist']", function () {
+        return filterBySpecialist(this);
+    });
 
+    var calendar;
+    
+    var neededSpecialist = 1;
     function loadCalendar() {
         var calendarEl = document.getElementById('calendar');
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
+        calendar = new FullCalendar.Calendar(calendarEl, {
             plugins: ['interaction', 'dayGrid', 'timeGrid'],
             locale: 'lt',
             header: {
@@ -17,6 +20,8 @@ $(function () {
             height: 1000,
             fixedWeekCount: false,
             showNonCurrentDates: false,
+            editable: true,
+            firstDay: 1,
             views: {
                 timeGridWeek: {
                     type: 'timeGrid',
@@ -35,7 +40,6 @@ $(function () {
     var allClients = Client.getByStatus(1);
     var dates = {};
     var mergedDates = {};
-    var neededSpecialist = 1;
 
     function averageWaitingTimeByDate () {
         for (var i in allClients) {
@@ -120,7 +124,6 @@ $(function () {
         var hours = mostBusyHours(specialist, year, month, day);
 
         if (null === hours) {
-            console.log('Nebuvo klientų!');
             return null;
         }
 
@@ -174,7 +177,6 @@ $(function () {
         var days = mostBusyDays(specialist, year, month);
 
         if(null === days) {
-            console.log('Nebuvo klientų!');
             return null;
         }
         
@@ -262,16 +264,32 @@ $(function () {
         for(var year in mergedDates) {
             for (var month in mergedDates[year]) {
                 var mostFreeDayObject = mostFreeDay(specialist, year, month);
-                results.push(formatEventObject(mostFreeDayObject, true));
-                var mostFreeHourObject = mostFreeHour(specialist, year, month, mostFreeDayObject.day);
-                results.push(formatEventObject(mostFreeHourObject, false, true));
+                if(null !== mostFreeDayObject) {
+                    results.push(formatEventObject(mostFreeDayObject, true));
+                    var mostFreeHourObject = mostFreeHour(specialist, year, month, mostFreeDayObject.day);
+                    if (null !== mostFreeHourObject) {
+                        results.push(formatEventObject(mostFreeHourObject, false, true));
+                    }
+                }
             }
         }
         return results;
     }
 
+    function filterBySpecialist (select) {
+        neededSpecialist = $(select).val();
+        var events = calendar.getEvents();
+        for(var i in events) {
+            events[i].remove();
+        }
+
+        var newEvents = generateEvents(neededSpecialist);
+        for(var i in newEvents) {
+            calendar.addEvent(newEvents[i]);
+        }
+        //calendar.addResourcgenerateEvents(neededSpecialist));
+    }
+
     averageWaitingTimeByDate();
-   // mostBusyDays(neededSpecialist, 2019, 9);
-    //mostBusyHours(neededSpecialist, 2019, 9, 23);
-loadCalendar();
+    loadCalendar();
 });
