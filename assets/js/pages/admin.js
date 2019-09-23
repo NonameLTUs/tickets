@@ -1,4 +1,6 @@
 $(function () {
+    var API_URL = "api/index.php";
+
     /// Events
     $("form[data-name='login-form']").submit(function (e) {
         e.preventDefault();
@@ -72,7 +74,7 @@ $(function () {
 
     function loadDefaultClients () {
         if(loggedIn) {
-            var url = "api/index.php?endpoint=getClients";
+            var url = API_URL + "?endpoint=getClients";
             $.ajax({
                     method: "GET",
                     url: url
