@@ -63,6 +63,12 @@ $(function () {
         }
 
         var bestTime = timesArray[0];
+
+        if ("undefined" === typeof bestTime) {
+            $("[data-name='best-visit-time']").html("Skaičiuojama");
+            return;
+        }
+        
         $("[data-name='best-visit-time']").html(weekDaysLocale[bestTime.weekDay] + ' ' +("0" + bestTime.hour).slice(-2) + ':00 h');
     }
 
