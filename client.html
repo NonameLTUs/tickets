@@ -39,6 +39,8 @@
 
         <div class="mt-3"></div>
 
+        <div class="alert" data-name="alert" role="alert" style="display:none"></div>
+
         <form class="form-row mb-3" data-name="chooseSpecialist">
             <div class="col-2">
                 <label for="number" class="col-form-label">Jūsų numeris</label>
@@ -51,14 +53,17 @@
             </div>
         </form>
 
-        <div class="alert alert-primary" role="alert" data-name="yourTurnAlert" style="display: none">Jūsų eilė eiti!</div>
-        <div class="alert alert-success" role="alert" data-name="servicedAlert" style="display: none">Jūs jau buvote aptarnautas!</div>
-
         <div data-name="num-in-que" style="display: none">
             <span>Jūs esate</span> <span class="badge badge-secondary" data-name="num"></span> <span>eilėje</span>
         </div>
         <div data-name="approximate-waiting-time" style="display: none">
             <span>Jūs eisite po</span> <span class="badge badge-secondary" data-name="time"></span>
+        </div>
+        <div data-name="button-delay" style="display: none">
+            <button type="button" class="btn btn-primary" data-action="delayClient">Pavėlinti apsilankymą</button>
+        </div>
+        <div data-name="button-cancel" style="display: none">
+            <button type="button" class="btn btn-danger" data-action="cancelClient">Atšaukti apsilankymą</button>
         </div>
 
     </div>
