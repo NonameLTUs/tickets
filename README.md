@@ -126,12 +126,12 @@ Galimas užduoties praplėtimas ( `Level 3` )
 - [ ] Funkcija lengvam duomenų saugyklos pakeitimui: tarp `localStorage` ir realaus Backend serverio
 - [ ] Pavyzdys, kad veiks su realiu `Backend` (`swagger`, `wiremock` ar minimalistiniai `PHP`/`node.js` failai)
 - [ ] Laikų filtravimas pagal dienas
-- [ ] Rodomas mėnesio kalendorius (HTML)
-- [ ] Galima nueiti į senų ar naujų mėnesių statistiką, nepriklausomai ar tą mėnesį buvo klientų (duomenų)
+- [x] Rodomas mėnesio kalendorius (HTML)
+- [x] Galima nueiti į senų ar naujų mėnesių statistiką, nepriklausomai ar tą mėnesį buvo klientų (duomenų)
 - [ ] Statistikoje galima uždėti filtrą konkretiems specialistams
-- [ ] Kalendoriaus išdėstymas prisitaiko nuo ekrano (`media` CSS)
-- [ ] Spalvomis išryškinama mažiausiai užimta diena
-- [ ] Spalvomis išryškinama (ar tekstu parodoma) mažiausiai užimta valanda konkrečioje dienoje
+- [x] Kalendoriaus išdėstymas prisitaiko nuo ekrano (`media` CSS)
+- [x] Spalvomis išryškinama mažiausiai užimta diena
+- [x] Spalvomis išryškinama (ar tekstu parodoma) mažiausiai užimta valanda konkrečioje dienoje
 - [x] Lankytojui sugeneruojamas unikalus kodas (apsauga nuo sekančio skaičiaus įvedant formoje)
 - [x] Lankytojas mato mygtuką pavėlinti (sukeičia su už juo esančiu žmogumi)
 - [x] Pavėlinimas negalimas, jei lankytojas yra paskutinis eilėje
