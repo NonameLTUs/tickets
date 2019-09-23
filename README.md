@@ -117,7 +117,7 @@ Galimas užduoties praplėtimas ( `Level 3` )
 > Vertinama, kai yra padarytos pirmos dalys
 
 **Papildymas puslapyje**
-- [ ] Lankytojo puslapis, kur jis mato laiką iki savo eilės ir gali pavėlinti apsilankymą
+- [x] Lankytojo puslapis, kur jis mato laiką iki savo eilės ir gali pavėlinti apsilankymą
 
 **Extra puslapis**
 - [ ] Puslapis su statistika, kada labiausiai verta ateiti pas specialistą (atvaizduoti pavyzdinius duomenis)
@@ -133,8 +133,8 @@ Galimas užduoties praplėtimas ( `Level 3` )
 - [ ] Spalvomis išryškinama mažiausiai užimta diena
 - [ ] Spalvomis išryškinama (ar tekstu parodoma) mažiausiai užimta valanda konkrečioje dienoje
 - [x] Lankytojui sugeneruojamas unikalus kodas (apsauga nuo sekančio skaičiaus įvedant formoje)
-- [ ] Lankytojas mato mygtuką pavėlinti (sukeičia su už juo esančiu žmogumi)
-- [ ] Pavėlinimas negalimas, jei lankytojas yra paskutinis eilėje
+- [x] Lankytojas mato mygtuką pavėlinti (sukeičia su už juo esančiu žmogumi)
+- [x] Pavėlinimas negalimas, jei lankytojas yra paskutinis eilėje
 - [ ] Lankytojas gali atšaukti susitikimą pas specialistą (įrašymas į `localStorage`)
 - [ ] Įvedamo vardo apsauga administravimo puslapyje `Vardenis`
 - [ ] Netinkamo įvedimo apsauga (ir pranešimai) administravimo puslapyje
