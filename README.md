@@ -1,4 +1,4 @@
-# tickets
+# Tickets
 
 This project was created by `Liutauras Januškas` for `NFQ academy`.
 
