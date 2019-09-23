@@ -73,6 +73,7 @@ $(function () {
     }
 
     function loadDefaultClients () {
+        updateAlert('hide');
         if(loggedIn) {
             var url = API_URL + "?endpoint=getClients";
             $.ajax({
@@ -96,6 +97,7 @@ $(function () {
     }
 
     function createClient() {
+        updateAlert('hide');
         if (loggedIn) {
             var specialist = $("select[name='specialist']").val();
 
