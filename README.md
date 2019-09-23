@@ -1,29 +1,3 @@
-Įžanga 'frontend'
-==========
-
-Užduotį galima atlikti pagal skirtingus sudėtingumo lygius (`level 1`, `level 2`, `level 3` ir `Bonus`). Kiekviename lygmenyje gaunami taškai už atliktus reikalavimus. Taškai sumuojami į bendrą balą pagal kurį sprendžiamas tavo stojimas į NFQ Akademiją.
-
-Geriausiai atlikusiems užduotį dar bus 30 min pokalbis susipažinimui ( telefonu ).
-
-
-Užduotį atlikti ir atsiųsti iki rugsėjo 23-tos vidurnakčio.
-Siųsti čia - https://forms.gle/cUpGNWfi991iicidA
-
-**Norint įgyvendinti level 2 ar level 3 reikės įgyvendinti level 1**
-
- 
-
-Frontend užduoties kontekstas
-==========
-
-Ligoninėse, bankuose, pašte, pasų išdavimo skyriuose ir pan. galima matyti ekranus su skaičiukais.
-Ateini, gauni lapuką pas pasirinktą specialistą/darbuotoją/langelį ir lauki savo eilės.
-
-Ar kada pagalvojote, kaip būtų faina,
-jei žinotumėte kiek maždaug dar reikia laukti eilėje ir atitinkamai susiplanuoti savo darbus.
-
- 
-
 Bonus - papildomi balai
 ==========
 
@@ -34,26 +8,6 @@ Bonus - papildomi balai
 - [ ] Kodas rašomas tvarkingai (naudojamas `PSR-2` ar pan. kodo stilius, linkas apačioje)
 - [ ] Projektas veikia be parse error ir pan.
 - [ ] README failas yra
-
-Siūloma (papildoma) literatūra:
-
-**GitHub instrukcijos**
-* https://www.codecademy.com/courses/learn-git/lessons/git-workflow
-* https://help.github.com/en/articles/adding-a-file-to-a-repository-using-the-command-line
-* https://help.github.com/en/articles/adding-an-existing-project-to-github-using-the-command-line
-
-**Svetainės talpinimas į serverį**
-* https://pages.github.com/
-
-**README file**
-* https://medium.com/@latoyazamill/how-to-create-a-readme-md-file-37cffa2d7ab4
-
-**Kita**
-* https://www.php-fig.org/psr/psr-2/
-* https://en.wikipedia.org/wiki/Atomic_commit
-* https://cssguidelin.es/#bem-like-naming
-
- 
 
 Minimalus užduoties įgyvendinimas ( `Level 1` )
 ===============================
@@ -73,14 +27,6 @@ Minimalus užduoties įgyvendinimas ( `Level 1` )
 - [x] Yra funkcija kliento ištrynimui iš objekto (mygtukas `Aptarnauta`) (_specialisto puslapis_)
 - [x] Duomenų filtravimas: pasirinkimas, kokio specialisto klientus aptarnauti (_specialisto puslapis_)
 - [x] Gražesnis dizainas panaudojant `CSS` (_švieslentės puslapis_)
-
-Siūloma literatūra:
-* https://blog.logrocket.com/the-complete-guide-to-using-localstorage-in-javascript-apps-ba44edb53a36/
-* https://www.w3schools.com/js/
-* https://www.w3schools.com/html/
-* https://www.w3schools.com/w3css/
-
- 
 
 Rekomenduojamas užduoties įgyvendinimas ( `Level 2` )
 =======================================
@@ -107,10 +53,6 @@ Rekomenduojamas užduoties įgyvendinimas ( `Level 2` )
 - [x] Yra pritaikyta greitam naujų lankytojų įvedimui (JavaScript `focus`)
 - [x] Naudojamas gražesnis dizainas (Pvz: google Material UI, Bootstrap)
 
-Siūloma (papildoma) literatūra:
-* https://getbootstrap.com/
-* https://material.io/design/material-theming/overview.html#using-material-theming
-
 Galimas užduoties praplėtimas ( `Level 3` )
 =============================
 
@@ -120,7 +62,7 @@ Galimas užduoties praplėtimas ( `Level 3` )
 - [x] Lankytojo puslapis, kur jis mato laiką iki savo eilės ir gali pavėlinti apsilankymą
 
 **Extra puslapis**
-- [ ] Puslapis su statistika, kada labiausiai verta ateiti pas specialistą (atvaizduoti pavyzdinius duomenis)
+- [x] Puslapis su statistika, kada labiausiai verta ateiti pas specialistą (atvaizduoti pavyzdinius duomenis)
 
 **Techniniai kriterijai:**
 - [ ] Funkcija lengvam duomenų saugyklos pakeitimui: tarp `localStorage` ir realaus Backend serverio
@@ -138,22 +80,3 @@ Galimas užduoties praplėtimas ( `Level 3` )
 - [x] Lankytojas gali atšaukti susitikimą pas specialistą (įrašymas į `localStorage`)
 - [x] Įvedamo vardo apsauga administravimo puslapyje `Vardenis`
 - [x] Netinkamo įvedimo apsauga (ir pranešimai) administravimo puslapyje
-
- 
-
-**Siūloma (papildoma) literatūra:**
-* https://restfulapi.net/
-* http://wiremock.org/
-* https://swagger.io/
-* https://www.php.net/manual/en/index.php
-* https://jestjs.io/
-* https://en.wikipedia.org/wiki/Atomic_commit
-* https://pages.github.com/
-
- 
-
-=============================
-
-Atmink tavo geriausias pagalbininkas yra Google.
-
-Sėkmės :)
