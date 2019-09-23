@@ -294,11 +294,11 @@ var Client = {
     approximateWaitingTime: function (client) {
         var averageWaitingTime = Client.averageWaitingTime;
         if(null === averageWaitingTime) {
-            return 'Calculating';
+            return 'Skaičiuojama';
         }
 
         if(0 >= averageWaitingTime) {
-            return 'Soon';
+            return 'Netrukus';
         }
 
         var lastServicingTime = Client.getLastServicingTime();
@@ -309,10 +309,10 @@ var Client = {
 
         if(0 >= miliseconds) {
             if(client.row > 0) {
-                return 'Soon';
+                return 'Netrukus';
             }
             
-            return 'On service';
+            return 'Šiuo metu aptarnaujamas';
         }
 
         var minutes = Math.floor(seconds / 60);
