@@ -128,7 +128,7 @@ Galimas užduoties praplėtimas ( `Level 3` )
 - [ ] Laikų filtravimas pagal dienas
 - [x] Rodomas mėnesio kalendorius (HTML)
 - [x] Galima nueiti į senų ar naujų mėnesių statistiką, nepriklausomai ar tą mėnesį buvo klientų (duomenų)
-- [ ] Statistikoje galima uždėti filtrą konkretiems specialistams
+- [x] Statistikoje galima uždėti filtrą konkretiems specialistams
 - [x] Kalendoriaus išdėstymas prisitaiko nuo ekrano (`media` CSS)
 - [x] Spalvomis išryškinama mažiausiai užimta diena
 - [x] Spalvomis išryškinama (ar tekstu parodoma) mažiausiai užimta valanda konkrečioje dienoje
