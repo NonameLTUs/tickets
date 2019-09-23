@@ -135,7 +135,7 @@ Galimas užduoties praplėtimas ( `Level 3` )
 - [x] Lankytojui sugeneruojamas unikalus kodas (apsauga nuo sekančio skaičiaus įvedant formoje)
 - [x] Lankytojas mato mygtuką pavėlinti (sukeičia su už juo esančiu žmogumi)
 - [x] Pavėlinimas negalimas, jei lankytojas yra paskutinis eilėje
-- [ ] Lankytojas gali atšaukti susitikimą pas specialistą (įrašymas į `localStorage`)
+- [x] Lankytojas gali atšaukti susitikimą pas specialistą (įrašymas į `localStorage`)
 - [ ] Įvedamo vardo apsauga administravimo puslapyje `Vardenis`
 - [ ] Netinkamo įvedimo apsauga (ir pranešimai) administravimo puslapyje
 
