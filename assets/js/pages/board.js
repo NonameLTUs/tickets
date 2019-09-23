@@ -32,7 +32,7 @@ $(function() {
 
                 var template = (
                     "<tr data-id='" + client.id + "' class='" + (isHighlighted ? 'highlight' : '') + "'>" +
-                    "<td class='align-middle'>" + client.specialist + "</td>" +
+                    "<td class='align-middle'>" + Client.specialistsList[client.specialist] + "</td>" +
                     "<td class='align-middle'>" + client.number + "</td>" +
                     "<td class='align-middle' data-name='approximateWaitingTime'>" + Client.approximateWaitingTime(client) + "</td>" +
                     "</tr>"

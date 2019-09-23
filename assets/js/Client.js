@@ -1,4 +1,9 @@
 var Client = {
+    specialistsList: {
+        1: 'Gustas Martynaitis',
+        2: 'Aleksandras Malkovas',
+        3: 'Margarita Kokosina'
+    },
     getAll: function () {
         return Storage.getItem('clients') || [];
     },
@@ -300,7 +305,11 @@ var Client = {
         var seconds =  miliseconds / 1000;
 
         if(0 >= miliseconds) {
-            if(client.row > 0) {
+            var row = Client.getRows(client.specialist).findIndex(function (item) {
+                return item.id === client.id
+            });
+            
+            if(row > 0) {
                 return 'Netrukus';
             }
             

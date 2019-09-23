@@ -347,7 +347,15 @@ $(function () {
         //calendar.addResourcgenerateEvents(neededSpecialist));
     }
 
+    function loadSpecialists () {
+        var specialistsList = Client.specialistsList;
+        for(var i in specialistsList) {
+            $("select[name='specialist']").append("<option value='" + i + "'>" + specialistsList[i] + "</option>");
+        }
+    }
+
     averageWaitingTimeByDate();
     loadCalendar();
     updateBestVisitTime();
+    loadSpecialists();
 });

@@ -72,14 +72,14 @@ $(function () {
 
     function loadDefaultClients () {
         if(loggedIn) {
-            var url = "http://localhost/nfq/back/index.php?endpoint=getClients";
+            var url = "api/index.php?endpoint=getClients";
             $.ajax({
                     method: "GET",
                     url: url
                 })
                 .done(function (response) {
                     if(null !== response.error) {
-                        alert(response.error);
+                        updateAlert('show', response.error, 'danger');
                     } else {
                         Client.set(response.result);
                         updateAlert('show', 'Pavyzdiniai duomenys užkrauti sėkmingai!', 'info');

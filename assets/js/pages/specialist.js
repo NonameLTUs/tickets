@@ -81,7 +81,7 @@ $(function () {
 
             var template = (
                 "<tr data-id='" + client.id + "' class='"+(isHighlighted ? 'highlight' : '')+"'>" +
-                "<td class='align-middle'>" + client.specialist + "</td>" +
+                "<td class='align-middle'>" + Client.specialistsList[client.specialist] + "</td>" +
                 "<td class='align-middle'>" + client.number + "</td>" +
                 "<td>" + servicedButton + "</td>" +
                 "</tr>"
@@ -122,7 +122,7 @@ $(function () {
             for (let i in specialists) {
                 let specialist = specialists[i];
 
-                $("select[name='specialist']").append("<option value='"+specialist+"'>"+specialist+"</option>");
+                $("select[name='specialist']").append("<option value='" + specialist + "'>" + Client.specialistsList[specialist] + "</option>");
             }
         }
     }
