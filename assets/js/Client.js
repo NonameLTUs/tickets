@@ -54,15 +54,19 @@ var Client = {
     getLastNumber: function () {
         var clients = Client.getAll();
 
+        if ("undefined" === typeof clients){
+            return 0;
+        }
+
         var clientsNumbers = clients.sort(function (a, b) {
             return b.number - a.number;
         });
 
         if (0 === (clientsNumbers || []).length) {
             return 0;
-        } else {
-            return clientsNumbers[0].number;
         }
+
+        return clientsNumbers[0].number;
     },
     getNthClientsInRow: function (nth, count = 1) {
         var rows = Client.getRows();
