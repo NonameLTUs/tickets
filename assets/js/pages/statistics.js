@@ -40,6 +40,42 @@ $(function () {
     var allClients = Client.getByStatus(1);
     var dates = {};
     var mergedDates = {};
+    var clientsByWeekDaysAndHours = {
+        all: {}
+    };
+
+    function updateBestVisitTime () {
+        var data = clientsByWeekDaysAndHours[neededSpecialist];
+        var timesArray = [];
+        for(let weekDay in data) {
+            for(let hour in data[weekDay]) {
+                timesArray.push({
+                    weekDay: weekDay,
+                    hour: hour,
+                    clientsCount: data[weekDay][hour]
+                });
+            }
+        }
+        
+        timesArray.sort(function (a, b) {
+            return a.clientsCount - b.clientsCount;
+        })
+
+        var weekDaysLocale = {
+            1: 'Pirmadienis',
+            2: 'Antradienis',
+            3: 'Trečiadienis',
+            4: 'Ketvirtadienis',
+            5: 'Penktadienis',
+            6: 'Šeštadienis',
+            7: 'Sekmadienis'
+        }
+
+        var bestTime = timesArray[0];
+        $("[data-name='best-visit-time']").html(weekDaysLocale[bestTime.weekDay] + ' ' +("0" + bestTime.hour).slice(-2) + ':00 h');
+
+        console.log(timesArray[0])
+    }
 
     function averageWaitingTimeByDate () {
         for (var i in allClients) {
@@ -49,31 +85,54 @@ $(function () {
             var year = date.getFullYear();
             var month = date.getMonth() + 1;
             var day = date.getDate();
+            var weekDay = date.getDay() + 1;
             var hour = date.getHours();
 
+            /** DATES BY SPECIALIST */
             if (!dates.hasOwnProperty(specialist)) {
                 dates[specialist] = {};
             }
-
             if (!dates[specialist].hasOwnProperty(year)) {
                 dates[specialist][year] = {};
-                mergedDates[year] = {};
             }
-
             if (!dates[specialist][year].hasOwnProperty(month)) {
                 dates[specialist][year][month] = {};
-                mergedDates[year][month] = {};
             }
-
             if (!dates[specialist][year][month].hasOwnProperty(day)) {
                 dates[specialist][year][month][day] = {};
-                mergedDates[year][month][day] = {};
             }
-
             if (!dates[specialist][year][month][day].hasOwnProperty(hour)) {
                 dates[specialist][year][month][day][hour] = [];
+            }
+
+            /** MERGED CLIENTS */
+            if (!mergedDates.hasOwnProperty(year)) {
+                mergedDates[year] = {};
+            }
+            if (!mergedDates[year].hasOwnProperty(month)) {
+                mergedDates[year][month] = {};
+            }
+            if (!mergedDates[year][month].hasOwnProperty(day)) {
+                mergedDates[year][month][day] = {};
+            }
+            if (!mergedDates[year][month][day].hasOwnProperty(hour)) {
                 mergedDates[year][month][day][hour] = [];
             }
+
+            /** CLIENTS COUNT BY WEEK DAYS AND HOURS */
+            if (!clientsByWeekDaysAndHours.hasOwnProperty(specialist)) {
+                clientsByWeekDaysAndHours[specialist] = {};
+            }
+            if (!clientsByWeekDaysAndHours[specialist].hasOwnProperty(weekDay)) {
+                clientsByWeekDaysAndHours[specialist][weekDay] = {};
+                clientsByWeekDaysAndHours['all'][weekDay] = {};
+            }
+            if (!clientsByWeekDaysAndHours[specialist][weekDay].hasOwnProperty(hour)) {
+                clientsByWeekDaysAndHours[specialist][weekDay][hour] = 0;
+                clientsByWeekDaysAndHours['all'][weekDay][hour] = 0;
+            }
+            clientsByWeekDaysAndHours[specialist][weekDay][hour] += 1;
+            clientsByWeekDaysAndHours['all'][weekDay][hour] += 1
 
             dates[specialist][year][month][day][hour].push(client.serviced_at - client.registered_at);
             mergedDates[year][month][day][hour].push(client.serviced_at - client.registered_at);
@@ -292,4 +351,5 @@ $(function () {
 
     averageWaitingTimeByDate();
     loadCalendar();
+    updateBestVisitTime();
 });
