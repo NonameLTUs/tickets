@@ -10,7 +10,7 @@ $(function () {
         var calendarEl = document.getElementById('calendar');
 
         calendar = new FullCalendar.Calendar(calendarEl, {
-            plugins: ['interaction', 'dayGrid', 'timeGrid'],
+            plugins: ['dayGrid'],
             locale: 'lt',
             header: {
                 left: 'prev',
@@ -22,15 +22,6 @@ $(function () {
             showNonCurrentDates: false,
             editable: true,
             firstDay: 1,
-            views: {
-                timeGridWeek: {
-                    type: 'timeGrid',
-                    duration: {
-                        days: 1
-                    },
-                    buttonText: '1 day'
-                }
-            },
             events: generateEvents(neededSpecialist)
         });
 
