@@ -1,5 +1,6 @@
 $(function () {
     var API_URL = "api/index.php";
+    var PHP_ON = false;
 
     /// Events
     $("form[data-name='login-form']").submit(function (e) {
@@ -75,16 +76,28 @@ $(function () {
     function loadDefaultClients () {
         updateAlert('hide');
         if(loggedIn) {
-            var url = API_URL + "?endpoint=getClients";
+
+            var url;
+            if(PHP_ON) {
+                url = API_URL + "?endpoint=getClients";
+            } else {
+                url = 'api/clients.json';
+            }
+
             $.ajax({
                     method: "GET",
                     url: url
                 })
                 .done(function (response) {
-                    if(null !== response.error) {
-                        updateAlert('show', response.error, 'danger');
+                    if(PHP_ON) {
+                        if(null !== response.error) {
+                            updateAlert('show', response.error, 'danger');
+                        } else {
+                            Client.set(response.result);
+                            updateAlert('show', 'Pavyzdiniai duomenys užkrauti sėkmingai!', 'info');
+                        }
                     } else {
-                        Client.set(response.result);
+                        Client.set(response);
                         updateAlert('show', 'Pavyzdiniai duomenys užkrauti sėkmingai!', 'info');
                     }
                 })
