@@ -191,8 +191,6 @@ var Client = {
         rows[specialist] = clients;
 
         Storage.setItem('clients_rows', rows);
-
-        return;
     },
     updateRow: function (client, action) {
         var rows = Client.getRows(client.specialist);
@@ -234,16 +232,10 @@ var Client = {
             }
         })
     },
-    clientInRow: function (client, clients = null) {
-        var allClients;
+    clientInRow: function (client) {
+        var rows = Client.getRows(client.specialist);
 
-        if (null !== clients) {
-            allClients = clients;
-        } else {
-            allClients = Client.getBySpecialist(client.specialist, Client.getByStatus(0));
-        }
-
-        var clientInRow = allClients.findIndex(function (item) {
+        var clientInRow = rows.findIndex(function (item) {
             return item.id == client.id
         });
 
@@ -255,14 +247,10 @@ var Client = {
         if (null !== clients) {
             allClients = clients;
         } else {
-            allClients = Client.orderByRow(Client.getBySpecialist(client.specialist, Client.getByStatus(0)));
+            allClients = Client.getBySpecialist(client.specialist, Client.getByStatus(0));
         }
 
-        var lastRow = allClients.findIndex(function (item) {
-            return item.id == client.id
-        });
-
-        return lastRow;
+        return allClients.length - 1;
     },
     averageWaitingTime: null,
     calculateAverageWaitingTime: function () {
@@ -337,4 +325,6 @@ if("undefined" === typeof Client.getLastServicingTime()) {
     Client.updateLastServicingTime();
 }
 
-Client.initRows();
+if (0 <= Client.getRows().length) {
+    Client.initRows();
+}
