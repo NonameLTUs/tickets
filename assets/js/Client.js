@@ -197,13 +197,20 @@ var Client = {
     updateRow: function (client, action) {
         var rows = Client.getRows(client.specialist);
 
-        if("remove" === action) {
-            var index = rows.findIndex(function (row) {
-                return row.id === client.id;
-            });
+        var index = rows.findIndex(function (row) {
+            return row.id === client.id;
+        });
 
+        if("remove" === action) {
             if(index > -1) {
                 rows.splice(index, 1);
+            }
+        }
+
+        if("down" === action) {
+            if(index > -1) {
+                var item = rows.splice(index, 1)[0];
+                rows.splice(index + 1, 0, item);
             }
         }
 
