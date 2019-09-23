@@ -73,8 +73,6 @@ $(function () {
 
         var bestTime = timesArray[0];
         $("[data-name='best-visit-time']").html(weekDaysLocale[bestTime.weekDay] + ' ' +("0" + bestTime.hour).slice(-2) + ':00 h');
-
-        console.log(timesArray[0])
     }
 
     function averageWaitingTimeByDate () {
